@@ -1,6 +1,7 @@
 // IMPORTS
 @import 'bootstrap/scss/bootstrap.scss';
 @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import './variables.scss';
 
 
 // RESET
@@ -8,4 +9,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+body {
+    background-color: $bg_primary_color;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
