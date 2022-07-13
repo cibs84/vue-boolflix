@@ -1,13 +1,16 @@
 <template>
     <section class="movie-list">
         <div class="container">
+            <h2 class="title">Film in italiano</h2>
             <div class="row row-cols-6">
                 <div class="col" v-for="(singleMovie, index) in arrayPassed" :key="index" :arrayReturned="arrayPassed">
-                    <MovieCard 
+                    <MsCard 
                         :title="singleMovie.title" 
                         :originalTitle="singleMovie.original_title" 
                         :language="singleMovie.original_language" 
                         :vote="singleMovie.vote_average"
+                        :overview="singleMovie.overview"
+                        :posterPath="singleMovie.poster_path"
                     />
                 </div>
             </div>
@@ -17,21 +20,16 @@
 
 
 <script>
-import MovieCard from './MovieCard.vue';
+import MsCard from './MsCard.vue';
 
 
 export default {
     name: 'MovieList',
     components: {
-        MovieCard
+        MsCard
     },
     props: {
         arrayPassed: Array
-    },
-    data(){
-        return {
-            
-        }
     }
 }
 </script>

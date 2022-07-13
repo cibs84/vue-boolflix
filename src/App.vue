@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-      <HeaderComponent @search="searchMovies"/>
+      <HeaderComponent @search="searchMoviesSeries"/>
 
       <main>
           <MovieList :arrayPassed="moviesArray"/>
+          <SeriesList :arrayPassed="seriesArray"/>
       </main>
   </div>
 </template>
@@ -12,12 +13,14 @@
 import axios from 'axios';
 import HeaderComponent from './components/HeaderComponent.vue';
 import MovieList from './components/MovieList.vue';
+import SeriesList from './components/SeriesList.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderComponent,
-    MovieList
+    MovieList,
+    SeriesList
   },
   data(){
     return {
@@ -30,8 +33,8 @@ export default {
     }
   },
   methods: {
-    searchMovies(inputSearch){
-        // Creo l'oggetto con i parametri per la chiamata
+    searchMoviesSeries(inputSearch){
+        // Creo l'oggetto con i parametri per le chiamate
         const objParams = {
           params: {
             api_key: this.apiKey,
@@ -72,4 +75,5 @@ export default {
 <style lang="scss">
 @import './assets/styles/style.scss';
 @import './assets/styles/variables.scss';
+
 </style>
