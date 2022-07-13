@@ -7,8 +7,8 @@
 
                 <!-- Search -->
                 <div class="col input-group search">
-                    <input v-model="inputSearch" type="text" class="form-control" placeholder="Titoli, persone, generi" aria-label="Search" aria-describedby="button-addon2">
-                    <button @click.prevent="$emit('search', inputSearch)" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    <input v-model="inputSearch" @keyup.enter="$emit('search', inputSearch)" type="text" class="form-control" placeholder="Titoli, persone, generi" aria-label="Search" aria-describedby="button-addon2">
+                    <button @click="$emit('search', inputSearch)" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                 </div>
             </div>
         </div>

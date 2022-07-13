@@ -2,7 +2,7 @@
     <section class="movie-list">
         <div class="container">
             <div class="row row-cols-6">
-                <div class="col" v-for="(singleMovie, index) in moviesArray" :key="index" :searchText="searchText">
+                <div class="col" v-for="(singleMovie, index) in arrayPassed" :key="index" :arrayReturned="arrayPassed">
                     <MovieCard 
                         :title="singleMovie.title" 
                         :originalTitle="singleMovie.original_title" 
@@ -18,7 +18,7 @@
 
 <script>
 import MovieCard from './MovieCard.vue';
-import axios from 'axios';
+
 
 export default {
     name: 'MovieList',
@@ -26,37 +26,17 @@ export default {
         MovieCard
     },
     props: {
-        searchText: String
+        arrayPassed: Array
     },
     data(){
         return {
-            transferCompleted: false,
-            moviesArray: [],
-            inputSearch: this.searchText
+            moviesArray: []
         }
     },
-    methods: {
-        getMovies(inputSearch){
-            axios
-            // .get('https://api.themoviedb.org/3/search/movie?api_key=762e8d8371364239e7194e5712ca4d7b&language=en-US&query=bat&page=1&include_adult=false')
-            .get('https://api.themoviedb.org/3/search/movie', { 
-                params: {
-                    api_key: '762e8d8371364239e7194e5712ca4d7b',
-                    query: inputSearch
-                }
-            })
-            .then(response => {
-                this.moviesArray = response.data.results;
-                console.log(response);
-                this.transferCompleted = true;
-            })
-            .catch(err => {
-                console.log('Error: ', err)
-            })
+    mounted(){
+        () => {
+            this.moviesArray = this.arrayPassed;
         }
-    },
-    created() {
-        this.getMovies(this.searchText);
     }
 }
 </script>
