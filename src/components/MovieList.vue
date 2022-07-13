@@ -30,12 +30,7 @@ export default {
     },
     data(){
         return {
-            moviesArray: []
-        }
-    },
-    mounted(){
-        () => {
-            this.moviesArray = this.arrayPassed;
+            
         }
     }
 }

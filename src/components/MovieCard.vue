@@ -4,7 +4,9 @@
             <ul>
                 <li>{{title}}</li>
                 <li>{{originalTitle}}</li>
-                <li>{{language}}</li>
+                <li>
+                    <img class="flag" :src="`https://countryflagsapi.com/png/${this.fixFlag(language)}`">
+                </li>
                 <li>{{vote}}</li>
             </ul>
         </div>
@@ -20,6 +22,28 @@ export default {
         originalTitle: String,
         language: String,
         vote: Number
+    },
+    data(){
+        return {
+            flagIsVisible: true
+        }
+    },
+    methods: {
+        fixFlag(flag) {
+            if(flag == 'en'){
+                return flag = "gb";
+            } else if(flag == 'ja'){
+                return flag = "jp";
+            } else if(flag == 'hi'){
+                return flag = "in";
+            } else if(flag == 'cs'){
+                return flag = "cz";
+            } else if(flag == 'ko'){
+                return flag = "kr";
+            } else if(flag == 'sv'){
+                return flag = "ch";
+            } return flag
+        }
     }
 }
 </script>
@@ -32,5 +56,8 @@ export default {
     padding: 1rem;
     margin-bottom: 1.5rem;
 
+    .flag {
+        width: 1.5rem;
+    }
 }
 </style>
