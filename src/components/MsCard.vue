@@ -1,24 +1,27 @@
 <template>
-    <!-- <div class="ms_card" :style="`background-image: url('https://image.tmdb.org/t/p/w342${posterPath}')`"> -->
-    <div class="ms_card" :style="posterPath ? stylePoster : stylePlaceholderPoster">
+    <div class="ms_card" :style="itemArray.poster_path ? stylePoster : stylePlaceholderPoster">
         <ul>
             <li>
-                <span class="fw-bold">Titolo: </span>{{title}}
+                <span class="fw-bold">Titolo: </span>{{itemArray.title}}
             </li>
             <li>
-                <span class="fw-bold">Titolo originale: </span>{{originalTitle}}
+                <span class="fw-bold">Titolo originale: </span>{{itemArray.original_title}}
             </li>
             <li>
                 <span class="fw-bold">Original language: </span>
-                <img class="flag" :src="`https://countryflagsapi.com/png/${this.fixFlag(language)}`">
+                <img class="flag" :src="`https://countryflagsapi.com/png/${this.fixFlag(itemArray.original_language)}`">
             </li>
             <li class="stars-container">
                 <!-- Ciclo Stelline -->
-                <span class="star " v-for="(number, index) in 5" :key="index" :class="{ 'active': number <= Math.ceil(vote/2)}">&#9733;</span>
+                <span class="star " 
+                    v-for="(number, index) in 5" 
+                    :key="index" 
+                    :class="{ 'active': number <= Math.ceil(itemArray.vote_average/2)}"
+                >&#9733;</span>
             </li>
             <li>
                 <span class="fw-bold">Overview: </span>
-                {{overview}}
+                {{itemArray.overview}}
             </li>
         </ul>
     </div>
@@ -29,19 +32,11 @@
 export default {
     name: 'MsCard',
     props: {
-        title: String,
-        originalTitle: String,
-        language: String,
-        vote: Number,
-        overview: String,
-        posterPath: String
+        itemArray: Array
     },
     data(){
         return {
-            flagIsVisible: true,
-            urlPoster: `https://image.tmdb.org/t/p/w342${this.posterPath}`,
-            urlPlaceHolder: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAUl2UM8vrlJjcUQDeaXGMp9H6QR0XOoamHQ&usqp=CAU',
-            stylePoster: `background-image: url('https://image.tmdb.org/t/p/w342${this.posterPath}')`,
+            stylePoster: `background-image: url('https://image.tmdb.org/t/p/w342${this.itemArray.poster_path}')`,
             stylePlaceholderPoster: "background-image: url('https://d994l96tlvogv.cloudfront.net/uploads/film/poster/poster-image-coming-soon-placeholder-no-logo-500-x-740_26588.png')"
         }
     },

@@ -3,15 +3,13 @@
         <div class="container">
             <h2 class="title">Serie TV da vedere tutto d'un fiato</h2>
             <div class="row row-cols-6">
-                <div class="col" v-for="(singleSeries, index) in arrayPassed" :key="index" :arrayReturned="arrayPassed">
-                    <MsCard 
-                        :title="singleSeries.name" 
-                        :originalTitle="singleSeries.original_name" 
-                        :language="singleSeries.original_language" 
-                        :vote="singleSeries.vote_average"
-                        :overview="singleSeries.overview"
-                        :posterPath="singleSeries.poster_path"
-                    />
+                <div 
+                    class="col" 
+                    v-for="(singleSeries, index) in arrayPassed" 
+                    :key="index"
+                >
+                    <!-- MsCard Component -->
+                    <MsCard :itemArray="singleSeries"/> 
                 </div>
             </div>
         </div>

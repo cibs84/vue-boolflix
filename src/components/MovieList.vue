@@ -3,15 +3,13 @@
         <div class="container">
             <h2 class="title">Film in italiano</h2>
             <div class="row row-cols-6">
-                <div class="col" v-for="(singleMovie, index) in arrayPassed" :key="index" :arrayReturned="arrayPassed">
-                    <MsCard 
-                        :title="singleMovie.title" 
-                        :originalTitle="singleMovie.original_title" 
-                        :language="singleMovie.original_language" 
-                        :vote="singleMovie.vote_average"
-                        :overview="singleMovie.overview"
-                        :posterPath="singleMovie.poster_path"
-                    />
+                <div 
+                    class="col" 
+                    v-for="(singleMovie, index) in arrayPassed" 
+                    :key="index"
+                >
+                    <!-- MsCard Component -->
+                    <MsCard :itemArray="singleMovie"/> 
                 </div>
             </div>
         </div>
