@@ -56,6 +56,9 @@ header {
                 color: $brand_secondary_color;
                 background-color: transparent;
             }
+            input:focus {
+                box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 16%);
+            }
         }
     }
 }

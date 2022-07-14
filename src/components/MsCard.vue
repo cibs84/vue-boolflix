@@ -1,5 +1,6 @@
 <template>
-    <div class="ms_card" :style="`background-image: url('https://image.tmdb.org/t/p/w342${posterPath}');`">
+    <!-- <div class="ms_card" :style="`background-image: url('https://image.tmdb.org/t/p/w342${posterPath}')`"> -->
+    <div class="ms_card" :style="posterPath ? stylePoster : stylePlaceholderPoster">
         <ul>
             <li>
                 <span class="fw-bold">Titolo: </span>{{title}}
@@ -38,7 +39,10 @@ export default {
     data(){
         return {
             flagIsVisible: true,
-            urlPoster: 'https://image.tmdb.org/t/p/w342',
+            urlPoster: `https://image.tmdb.org/t/p/w342${this.posterPath}`,
+            urlPlaceHolder: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAUl2UM8vrlJjcUQDeaXGMp9H6QR0XOoamHQ&usqp=CAU',
+            stylePoster: `background-image: url('https://image.tmdb.org/t/p/w342${this.posterPath}')`,
+            stylePlaceholderPoster: "background-image: url('https://d994l96tlvogv.cloudfront.net/uploads/film/poster/poster-image-coming-soon-placeholder-no-logo-500-x-740_26588.png')"
         }
     },
     methods: {
